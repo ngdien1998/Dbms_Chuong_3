@@ -1,0 +1,78 @@
+﻿@model IPagedList<SinhVien>
+@{
+    ViewBag.Title = "Trang quản lý sinh viên";
+}
+
+<div class="container">
+    <div class="card border-info">
+        <h5 class="card-header">Quản lý danh sách sinh viên</h5>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4 col-12">
+                    @Html.ActionLink("Thêm sinh viên", "Create", null, new { @class = "btn btn-primary" })
+                </div>
+                <div class="col-md-8 col-12">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Nhập tên sinh viên cần tìm" aria-label="" aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit" id="button-addon2">Tìm kiếm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.First().MSSV)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().TenSV)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().NgaySinh)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Lop)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Nu)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().DienThoai)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().DiaChi)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Diem)</th>
+                    <th></th>
+                </tr>
+                @foreach (SinhVien item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(model => item.MSSV)</td>
+                        <td>@Html.DisplayFor(model => item.TenSV)</td>
+                        <td>@item.NgaySinh.ToString("dd/MM/yyyy")</td>
+                        <td>@Html.DisplayFor(model => item.Lop)</td>
+                        <td>@Html.DisplayFor(model => item.Nu)</td>
+                        <td>@Html.DisplayFor(model => item.DienThoai)</td>
+                        <td>@Html.DisplayFor(model => item.DiaChi)</td>
+                        <td>@Html.DisplayFor(model => item.Diem)</td>
+                        <td>
+                            @Html.ActionLink("Sửa", "Edit", new { id = item.MSSV }, new { @class = "btn btn-success" })
+                            @Html.ActionLink("Xóa", "Delete", new { id = item.MSSV }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </table>
+            @*Phân trang ở đây*@
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        </div>
+    </div>
+</div>
+
+@section styles {
+    <style type="text/css">
+        h2 {
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .card {
+            margin-top: 30px;
+        }
+
+        .pagination-container {
+            text-align: right;
+        }
+
+        input, select, textarea {
+            max-width: none;
+        }
+    </style>
+}
