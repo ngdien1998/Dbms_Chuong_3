@@ -14,6 +14,7 @@ namespace ConnectDatabaseDbms.Models.ViewModels
         [Required(ErrorMessage = "Bạn chưa nhập tên đăng nhập")]
         public string Username { get; set; }
 
+        [DataType(DataType.Password)]
         [Required(ErrorMessage = "Bạn chưa nhập mật khẩu")]
         public string Password { get; set; }
     }

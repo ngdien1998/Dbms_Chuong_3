@@ -14,6 +14,7 @@ namespace ConnectDatabaseDbms.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Index(ServerLoginDetail detail)
         {
             try
@@ -29,9 +30,9 @@ namespace ConnectDatabaseDbms.Controllers
                     return new RedirectResult("/Home");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                ViewBag.ErrorMessage = ex.Message;
+                ViewBag.ErrorMessage = "Không thể kết nối với server, hãy kiểm tra lại.";
             }
             return View(detail);
         }
