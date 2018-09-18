@@ -116,8 +116,8 @@ namespace ConnectDatabaseDbms.Models.BusinessModels
         {
             try
             {
-                string sql = $"ModifyStudent '{model.MSSV}', N'{model.TenSV}', '{model.NgaySinh}', '{model.Lop}', {model.Nu}, '{model.DienThoai}', N'{model.DiaChi}', {model.Diem}";
-                int res = database.ExecuteNonQuery(sql, CommandType.StoredProcedure);
+                string sql = $"EXEC ModifyStudent '{model.MSSV}', N'{model.TenSV}', '{model.NgaySinh}', '{model.Lop}', {model.Nu}, '{model.DienThoai}', N'{model.DiaChi}', {model.Diem}";
+                int res = database.ExecuteNonQuery(sql, CommandType.Text);
                 return res > 0;
             }
             catch (Exception ex)

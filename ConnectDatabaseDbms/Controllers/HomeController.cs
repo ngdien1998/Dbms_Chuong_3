@@ -3,6 +3,7 @@ using ConnectDatabaseDbms.Models.DataModels;
 using PagedList;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Web.Mvc;
 
 namespace ConnectDatabaseDbms.Controllers
@@ -54,8 +55,16 @@ namespace ConnectDatabaseDbms.Controllers
 
         public ActionResult Delete(string id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             List<SinhVien> sinhViens = sinhVienModel.GetAll();
             SinhVien sv = sinhViens.Find(item => item.MSSV == id);
+            if (sv == null)
+            {
+                return HttpNotFound();
+            }
             return View(sv);
         }
 
@@ -66,6 +75,32 @@ namespace ConnectDatabaseDbms.Controllers
             SinhVien sv = sinhViens.Find(item => item.MSSV == id);
             sinhVienModel.Delete(sv);
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            List<SinhVien> sinhViens = sinhVienModel.GetAll();
+            SinhVien sv = sinhViens.Find(item => item.MSSV == id);
+            if (sv == null)
+            {
+                return HttpNotFound();
+            }
+            return View(sv);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(SinhVien model)
+        {
+            if (ModelState.IsValid)
+            {
+                sinhVienModel.Modify(model);
+                return RedirectToAction("Index");
+            }
+            return View(model);
         }
     }
 }
