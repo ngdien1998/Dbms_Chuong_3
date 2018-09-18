@@ -50,7 +50,6 @@
                     </tr>
                 }
             </table>
-            @*Phân trang ở đây*@
             @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
         </div>
     </div>
