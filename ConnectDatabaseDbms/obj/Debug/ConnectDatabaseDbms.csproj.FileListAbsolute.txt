@@ -198,3 +198,4 @@ C:\Users\ngled\Desktop\Doc\Dbms_Chuong_3\ConnectDatabaseDbms\obj\Debug\ConnectDa
 C:\Users\ngled\Desktop\Doc\Dbms_Chuong_3\ConnectDatabaseDbms\obj\Debug\ConnectDatabaseDbms.csproj.CopyComplete
 C:\Users\ngled\Desktop\Doc\Dbms_Chuong_3\ConnectDatabaseDbms\obj\Debug\ConnectDatabaseDbms.dll
 C:\Users\ngled\Desktop\Doc\Dbms_Chuong_3\ConnectDatabaseDbms\obj\Debug\ConnectDatabaseDbms.pdb
+C:\Users\ngled\Desktop\Doc\Dbms_Chuong_3\ConnectDatabaseDbms\obj\Debug\ConnectDatabaseDbms.csprojAssemblyReference.cache
